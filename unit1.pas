@@ -42,7 +42,7 @@ type
   end;
 
 var
-  Maze: array[0..MAZE_HEIGHT - 1, 0..MAZE_WIDTH - 1] of TMazeCell;
+  fMaze: array[0..MAZE_HEIGHT - 1, 0..MAZE_WIDTH - 1] of TMazeCell;
   Stack: TObjectStack;
   VisitedCells: Integer;
 
@@ -64,8 +64,6 @@ end;
 { TForm1 }
 
 procedure TForm1.FormCreate(Sender: TObject);
-var
-  X, Y, DX, DY: integer;
 begin
   Stack := TObjectStack.Create;
   Randomize;

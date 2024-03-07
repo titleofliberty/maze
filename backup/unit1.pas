@@ -8,8 +8,8 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Contnrs;
 
 const
-  MAZE_WIDTH = 3;
-  MAZE_HEIGHT = 3;
+  MAZE_WIDTH = 7;
+  MAZE_HEIGHT = 7;
 
 type
 

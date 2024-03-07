@@ -41,6 +41,11 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
       </Unit>
+      <Unit>
+        <Filename Value="maze.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Maze"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
