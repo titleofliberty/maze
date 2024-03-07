@@ -1,0 +1,11 @@
+object Form1: TForm1
+  Left = 358
+  Height = 614
+  Top = 177
+  Width = 895
+  Caption = 'Form1'
+  OnCreate = FormCreate
+  OnPaint = FormPaint
+  LCLVersion = '3.2.0.0'
+  WindowState = wsMaximized
+end
