@@ -20,9 +20,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
-        <TopLine Value="69"/>
-        <CursorPos X="33" Y="77"/>
-        <FoldState Value=" T3j50S3 Pj2jB0B"/>
+        <CursorPos X="19" Y="16"/>
         <UsageCount Value="27"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -33,9 +31,8 @@
         <UnitName Value="Maze"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="84"/>
-        <CursorPos X="30" Y="211"/>
-        <FoldState Value=" T4C01 T7JF82 PWTA T8K225 PTc2 T3iU045 pj8jO0E01]h1iV03213 Pi8k10 T6j405]i0jG2E138]PCjQ4w"/>
+        <CursorPos Y="184"/>
+        <FoldState Value=" TL404 T4C01 T7JF82 PWTA T8K225 PTc2 T3iU045 pj8jO0I]Yai60 T1iV03]NiejQ0F]NUi4]N6j405]s0jG2EC PiWjU4 TMlF22011o"/>
         <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit>

@@ -208,7 +208,7 @@ begin
   C := 24;
   ACanvas.Brush.Color := clWhite;
   ACanvas.Brush.Style := bsSolid;
-  ACanvas.Pen.Color := clRed;
+  ACanvas.Pen.Color := clBlue;
 
   for Y := 0 to FHeight - 1 do
     for X := 0 to FWidth - 1 do

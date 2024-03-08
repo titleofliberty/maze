@@ -6,7 +6,6 @@ object Form1: TForm1
   Caption = 'Form1'
   ClientHeight = 614
   ClientWidth = 895
-  Color = clWhite
   OnCreate = FormCreate
   OnPaint = FormPaint
   LCLVersion = '3.2.0.0'

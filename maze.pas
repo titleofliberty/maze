@@ -185,6 +185,10 @@ procedure TMaze.InitializeMaze;
 var
   X, Y: Integer;
 begin
+  // This procedure is the equivalent of emptying/clearing
+  // the maze. It is automatically called when GenerateMaze
+  // is called.
+
   for Y := 0 to FHeight - 1 do
     for X := 0 to FWidth - 1 do
     begin
