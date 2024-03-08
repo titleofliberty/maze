@@ -11,7 +11,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="27"/>
+        <UsageCount Value="28"/>
       </Unit>
       <Unit>
         <Filename Value="unit1.pas"/>
@@ -20,8 +20,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
-        <CursorPos X="19" Y="16"/>
-        <UsageCount Value="27"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="24"/>
+        <CursorPos X="36" Y="39"/>
+        <UsageCount Value="28"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -29,71 +31,15 @@
         <Filename Value="maze.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Maze"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos Y="184"/>
-        <FoldState Value=" TL404 T4C01 T7JF82 PWTA T8K225 PTc2 T3iU045 pj8jO0I]Yai60 T1iV03]NiejQ0F]NUi4]N6j405]s0jG2EC PiWjU4 TMlF22011o"/>
-        <UsageCount Value="25"/>
+        <TopLine Value="183"/>
+        <CursorPos X="22" Y="192"/>
+        <FoldState Value=" TL404 T4C01 T7aFA T8b23]D3jK040131121 Pj7kc0 T1jL03[L9id[L56k2052 T0kE2EA]NEjY4 TMmD22011m"/>
+        <UsageCount Value="26"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="maze.pas"/>
-        <Caret Line="47" Column="12" TopLine="26"/>
-      </Position>
-      <Position>
-        <Filename Value="maze.pas"/>
-        <Caret Line="88" Column="27" TopLine="76"/>
-      </Position>
-      <Position>
-        <Filename Value="maze.pas"/>
-        <Caret Column="6"/>
-      </Position>
-      <Position>
-        <Filename Value="maze.pas"/>
-        <Caret Line="88" Column="27" TopLine="73"/>
-      </Position>
-      <Position>
-        <Filename Value="maze.pas"/>
-        <Caret Line="48" Column="24" TopLine="47"/>
-      </Position>
-      <Position>
-        <Filename Value="maze.pas"/>
-        <Caret Line="117" Column="14" TopLine="110"/>
-      </Position>
-      <Position>
-        <Filename Value="maze.pas"/>
-        <Caret Line="42" Column="20" TopLine="33"/>
-      </Position>
-      <Position>
-        <Filename Value="maze.pas"/>
-        <Caret Line="43" Column="16" TopLine="26"/>
-      </Position>
-      <Position>
-        <Filename Value="maze.pas"/>
-        <Caret Line="50" Column="29" TopLine="30"/>
-      </Position>
-      <Position>
-        <Filename Value="maze.pas"/>
-        <Caret Line="51" Column="40" TopLine="31"/>
-      </Position>
-      <Position>
-        <Filename Value="maze.pas"/>
-        <Caret Line="43" Column="41" TopLine="40"/>
-      </Position>
-      <Position>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="77" Column="27" TopLine="64"/>
-      </Position>
-      <Position>
-        <Filename Value="maze.pas"/>
-        <Caret Line="34" Column="16" TopLine="11"/>
-      </Position>
-      <Position>
-        <Filename Value="maze.pas"/>
-        <Caret Line="48" Column="31" TopLine="42"/>
-      </Position>
       <Position>
         <Filename Value="maze.pas"/>
         <Caret Line="101" Column="38" TopLine="87"/>
@@ -157,6 +103,62 @@
       <Position>
         <Filename Value="maze.pas"/>
         <Caret Line="222" Column="33" TopLine="42"/>
+      </Position>
+      <Position>
+        <Filename Value="maze.pas"/>
+        <Caret Line="210" TopLine="34"/>
+      </Position>
+      <Position>
+        <Filename Value="maze.pas"/>
+        <Caret Line="204" Column="20" TopLine="155"/>
+      </Position>
+      <Position>
+        <Filename Value="maze.pas"/>
+        <Caret Line="208" Column="21" TopLine="159"/>
+      </Position>
+      <Position>
+        <Filename Value="maze.pas"/>
+        <Caret Line="205" Column="22" TopLine="96"/>
+      </Position>
+      <Position>
+        <Filename Value="maze.pas"/>
+        <Caret Line="72" TopLine="52"/>
+      </Position>
+      <Position>
+        <Filename Value="maze.pas"/>
+        <Caret Line="43" TopLine="20"/>
+      </Position>
+      <Position>
+        <Filename Value="maze.pas"/>
+        <Caret Line="212" Column="22" TopLine="161"/>
+      </Position>
+      <Position>
+        <Filename Value="maze.pas"/>
+        <Caret Line="30" Column="21" TopLine="11"/>
+      </Position>
+      <Position>
+        <Filename Value="maze.pas"/>
+        <Caret Line="67" Column="22" TopLine="36"/>
+      </Position>
+      <Position>
+        <Filename Value="maze.pas"/>
+        <Caret Line="118" Column="20" TopLine="115"/>
+      </Position>
+      <Position>
+        <Filename Value="maze.pas"/>
+        <Caret Line="60" TopLine="53"/>
+      </Position>
+      <Position>
+        <Filename Value="maze.pas"/>
+        <Caret Line="33" TopLine="91"/>
+      </Position>
+      <Position>
+        <Filename Value="maze.pas"/>
+        <Caret Line="85" Column="48" TopLine="72"/>
+      </Position>
+      <Position>
+        <Filename Value="maze.pas"/>
+        <Caret Line="192" Column="22" TopLine="183"/>
       </Position>
     </JumpHistory>
     <RunParams>

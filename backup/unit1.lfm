@@ -11,9 +11,9 @@ object Form1: TForm1
   LCLVersion = '3.2.0.0'
   WindowState = wsMaximized
   object Button1: TButton
-    Left = 680
+    Left = 808
     Height = 25
-    Top = 122
+    Top = 16
     Width = 75
     Caption = 'Button1'
     TabOrder = 0

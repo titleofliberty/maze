@@ -36,7 +36,7 @@ implementation
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   // Instantiate a maze 20 wide by 20 high
-  FMaze := TMaze.Create(20, 20);
+  FMaze := TMaze.Create(20, 20, 24);
   // Generate a random maze starting in cell 0, 0
   FMaze.GenerateMaze(0, 0);
 end;
