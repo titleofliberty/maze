@@ -14,6 +14,7 @@ type
 
   TForm1 = class(TForm)
     Button1: TButton;
+    Label1: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormPaint(Sender: TObject);
@@ -36,7 +37,7 @@ implementation
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   // Instantiate a maze 20 wide by 20 high
-  FMaze := TMaze.Create(20, 20);
+  FMaze := TMaze.Create(20, 20, 24);
   // Generate a random maze starting in cell 0, 0
   FMaze.GenerateMaze(0, 0);
 end;
@@ -44,7 +45,10 @@ end;
 procedure TForm1.Button1Click(Sender: TObject);
 begin
   // Generate a new maze
-  FMaze.GenerateMaze(10, 10);
+  FMaze.GenerateMaze(0, 0);
+  Label1.Caption := Format('Dead Ends: %d', [FMaze.DeadEnds.Count]);
+
+  FMaze.FindPath(0, 0, 19, 19);
   // Force the form to repaint
   Invalidate;
 end;
