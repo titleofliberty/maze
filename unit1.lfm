@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 47
+  Left = 242
   Height = 614
-  Top = 260
+  Top = 273
   Width = 895
   Caption = 'Form1'
   ClientHeight = 614
@@ -10,19 +10,28 @@ object Form1: TForm1
   OnPaint = FormPaint
   LCLVersion = '3.2.0.0'
   object Button1: TButton
-    Left = 808
+    Left = 680
     Height = 25
-    Top = 16
+    Top = 24
     Width = 75
-    Caption = 'Button1'
+    Caption = 'Generate'
     TabOrder = 0
     OnClick = Button1Click
   end
   object Label1: TLabel
-    Left = 819
+    Left = 680
     Height = 17
-    Top = 68
+    Top = 184
     Width = 38
     Caption = 'Label1'
+  end
+  object Button2: TButton
+    Left = 680
+    Height = 25
+    Top = 121
+    Width = 75
+    Caption = 'Path'
+    TabOrder = 1
+    OnClick = Button2Click
   end
 end

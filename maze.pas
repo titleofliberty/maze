@@ -51,19 +51,20 @@ type
   TMazeCell = class
   private
     FExplored: Boolean;
-    FPath: Boolean;
-    FPoint: TMazePoint;
     FRect: TCellRect;
     FVisited: Boolean;
     FWallEast: Boolean;
     FWallNorth: Boolean;
     FWallSouth: Boolean;
     FWallWest: Boolean;
+    FX: Integer;
+    FY: Integer;
   public
     constructor Create(AX, AY: Integer);
     function WallCount: Integer;
   published
-    property Point: TMazePoint read FPoint;
+    property X : Integer read FX;
+    property Y : Integer read FY;
     property Rect     : TCellRect read FRect write FRect;
     property Visited  : Boolean read FVisited   write FVisited;
     property Explored : Boolean read FExplored  write FExplored;
@@ -130,14 +131,14 @@ end;
 constructor TMazeCell.Create(AX, AY: Integer);
 begin
   inherited Create;
+  FX := AX;
+  FY := AY;
   FVisited   := false;
   FExplored  := false;
-  FPath      := false;
   FWallNorth := true;
   FWallSouth := true;
   FWallEast  := true;
   FWallWest  := true;
-  FPoint := TMazePoint.Create(AX, AY);
   FRect  := TCellRect.Create;
 end;
 
@@ -217,19 +218,15 @@ end;
 
 procedure TMaze.ExploreCell(AX, AY, GoalX, GoalY: Integer);
 var
-  Neighbors: TMazeCellList;
+  Neighbors: TObjectList;
   Cell, C: TMazeCell;
 begin
   Cell := FCells[AY, AX];
   Cell.Explored := true;
 
-  if (AX = GoalX) and (AY = GoalY) then
-  begin
-    FStack.Push(FCells[AY, AX]);
-    Exit;
-  end;
+  if (AX = GoalX) and (AY = GoalY) then Exit;
 
-  Neighbors := TMazeCellList.Create;
+  Neighbors := TObjectList.Create;
 
   if (Cell.WallNorth = false) then
   begin
@@ -240,13 +237,13 @@ begin
   if (Cell.WallSouth = false) then
   begin
     C := FCells[AY + 1, AX];
-    if (C.Explored = false) then Neighbors.Add(C);
+    if (C.Explored = false) then  Neighbors.Add(C);
   end;
 
   if (Cell.WallEast  = false) then
   begin
     C := FCells[AY, AX + 1];
-    if (C.Explored = false) then Neighbors.Add(C);
+    if (C.Explored = false) then  Neighbors.Add(C);
   end;
 
   if (Cell.WallWest  = false) then
@@ -255,20 +252,27 @@ begin
     if (C.Explored = false) then Neighbors.Add(C);
   end;
 
+  Cell := nil;
   if (Neighbors.Count = 0) then
   begin
     if (FStack.Count > 0) then
     begin
       Cell := TMazeCell(FStack.Pop);
-      ExploreCell(Cell.Point.X, Cell.Point.Y, GoalX, GoalY);
+      if Assigned(Cell) then
+        ExploreCell(Cell.X, Cell.Y, GoalX, GoalY);
     end;
   end
   else
   begin
-    Cell := Neighbors[Random(Neighbors.Count)];
-    FStack.Push(Cell);
-    ExploreCell(Cell.Point.X, Cell.Point.Y, GoalX, GoalY);
+    Cell := TMazeCell(Neighbors[Random(Neighbors.Count)]);
+    if Assigned(Cell) then
+    begin
+      FStack.Push(Cell);
+      ExploreCell(Cell.X, Cell.Y, GoalX, GoalY);
+    end;
   end;
+
+  FreeAndNil(Neighbors);
 end;
 
 constructor TMaze.Create(AWidth, AHeight, ACellSize: Integer);
@@ -372,24 +376,6 @@ begin
         ACanvas.Brush.Color := clWhite;
         ACanvas.Pen.Style := psSolid;
       end;
-
-      if (FPath.Count > 0) then
-      begin
-        I := FPath.IndexOf(cell);
-        if (I <> -1) then
-        begin
-          if (I = FPath.Count - 1) then
-            ACanvas.Brush.Color := clGreen
-          else if (I = 0) then
-            ACanvas.Brush.Color := clRed
-          else
-            ACanvas.Brush.Color := clBlue;
-          ACanvas.Pen.Style := psClear;
-          ACanvas.Ellipse(rct);
-          ACanvas.Brush.Color := clWhite;
-          ACanvas.Pen.Style := psSolid;
-        end;
-      end;
     end;
 
 end;
@@ -420,17 +406,16 @@ end;
 
 procedure TMaze.FindPath(AX, AY, GoalX, GoalY: Integer);
 begin
+  FPath  := TMazeCellList.Create;
   FStack := TObjectStack.Create;
   FStack.Push(FCells[AX, AY]);
   ExploreCell(AX, AY, GoalX, GoalY);
-  FPath := TMazeCellList.Create;
-  while FStack.Count > 0 do FPath.Add(TMazeCell(FStack.Pop));
-  FStack := TObjectStack.Create;
+  while FStack.Count > 0 do FPath.Insert(0, TMazeCell(FStack.Pop));
 end;
 
 function TMaze.CompareCells(ACell, BCell: TMazeCell): Boolean;
 begin
-  result := (ACell.Point.X = BCell.Point.X) and (ACell.Point.Y = BCell.Point.Y);
+  result := (ACell.X = BCell.X) and (ACell.Y = BCell.Y);
 end;
 
 end.
