@@ -39,7 +39,7 @@ implementation
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   // Instantiate a maze 20 wide by 20 high
-  FMaze := TMaze.Create(5, 5, 32);
+  FMaze := TMaze.Create(10, 10, 32);
   // Generate a random maze starting in cell 0, 0
   FMaze.GenerateMaze(0, 0);
 end;
@@ -54,8 +54,9 @@ end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 begin
-  FMaze.FindPath(0, 0, 4, 4);
+  FMaze.FindPath(1, 1, 8, 8);
   Label1.Caption := Format('Path Steps: %d', [FMaze.Path.Count]);
+  Invalidate;
 end;
 
 procedure TForm1.FormPaint(Sender: TObject);

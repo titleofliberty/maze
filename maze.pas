@@ -271,8 +271,6 @@ begin
       ExploreCell(Cell.X, Cell.Y, GoalX, GoalY);
     end;
   end;
-
-  FreeAndNil(Neighbors);
 end;
 
 constructor TMaze.Create(AWidth, AHeight, ACellSize: Integer);

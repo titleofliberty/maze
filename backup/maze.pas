@@ -252,22 +252,25 @@ begin
     if (C.Explored = false) then Neighbors.Add(C);
   end;
 
+  Cell := nil;
   if (Neighbors.Count = 0) then
   begin
     if (FStack.Count > 0) then
     begin
-      Cell := TMazeCell(FStack.Pop);
-      ExploreCell(Cell.X, Cell.Y, GoalX, GoalY);
+      Cell := TMazeCell(FStack.Peek);
+      if Assigned(Cell) then
+        ExploreCell(Cell.X, Cell.Y, GoalX, GoalY);
     end;
   end
   else
   begin
     Cell := TMazeCell(Neighbors[Random(Neighbors.Count)]);
-    FStack.Push(Cell);
-    ExploreCell(Cell.X, Cell.Y, GoalX, GoalY);
+    if Assigned(Cell) then
+    begin
+      FStack.Push(Cell);
+      ExploreCell(Cell.X, Cell.Y, GoalX, GoalY);
+    end;
   end;
-
-  FreeAndNil(Neighbors);
 end;
 
 constructor TMaze.Create(AWidth, AHeight, ACellSize: Integer);
