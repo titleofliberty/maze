@@ -1,10 +1,10 @@
 object Form1: TForm1
-  Left = 242
-  Height = 614
-  Top = 273
+  Left = 260
+  Height = 717
+  Top = 168
   Width = 895
   Caption = 'Form1'
-  ClientHeight = 614
+  ClientHeight = 717
   ClientWidth = 895
   OnCreate = FormCreate
   OnPaint = FormPaint

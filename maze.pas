@@ -264,7 +264,8 @@ begin
   else
   begin
     C := TMazeCell(FStack.Peek);
-    if not C.Equals(Cell) then FStack.Push(Cell);
+    if (Assigned(C)) and (not C.Equals(Cell)) then
+      FStack.Push(Cell);
     Cell := TMazeCell(Neighbors[Random(Neighbors.Count)]);
     if Assigned(Cell) then
     begin
