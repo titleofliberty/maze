@@ -20,9 +20,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="49"/>
-        <CursorPos X="29" Y="81"/>
+        <TopLine Value="46"/>
+        <CursorPos X="49" Y="63"/>
         <FoldState Value=" T4602 T7EBC T8M211 T6iJ03J"/>
         <UsageCount Value="57"/>
         <Loaded Value="True"/>
@@ -32,10 +31,11 @@
         <Filename Value="maze.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Maze"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="243"/>
-        <CursorPos X="28" Y="260"/>
-        <FoldState Value=" TL404 T4C01 T7JED3 PiKiIA T8K24A]EEig2 T3jT03614 pl7n70M]J1jU02[J5kQn90J]J6kG015 PCmL0 T0l72E849 pjRlI66]XMoM22111?"/>
+        <TopLine Value="219"/>
+        <CursorPos X="34" Y="392"/>
+        <FoldState Value=" TL404 T4C01 T7JED2 PYiIA T8K24811 Pi4ig2 T3jT036 pidjH0u41]fjLlP0 T1jU0261[J5kYng]J6kG01113 T0l72E849 pjRlJ66]?MoN22]U="/>
         <UsageCount Value="55"/>
         <Loaded Value="True"/>
       </Unit>
@@ -48,10 +48,6 @@
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="maze.pas"/>
-        <Caret Line="240" TopLine="161"/>
-      </Position>
       <Position>
         <Filename Value="maze.pas"/>
         <Caret Line="243" TopLine="167"/>
@@ -167,6 +163,10 @@
       <Position>
         <Filename Value="maze.pas"/>
         <Caret Line="260" Column="36" TopLine="243"/>
+      </Position>
+      <Position>
+        <Filename Value="maze.pas"/>
+        <Caret Line="270" Column="5" TopLine="238"/>
       </Position>
     </JumpHistory>
     <RunParams>

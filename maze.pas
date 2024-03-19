@@ -252,7 +252,6 @@ begin
     if (C.Explored = false) then Neighbors.Add(C);
   end;
 
-  Cell := nil;
   if (Neighbors.Count = 0) then
   begin
     if (FStack.Count > 0) then
@@ -264,6 +263,8 @@ begin
   end
   else
   begin
+    C := TMazeCell(FStack.Peek);
+    if not C.Equals(Cell) then FStack.Push(Cell);
     Cell := TMazeCell(Neighbors[Random(Neighbors.Count)]);
     if Assigned(Cell) then
     begin
@@ -387,6 +388,7 @@ begin
   //  can start processing the cells.
 
   FStack := TObjectStack.Create;
+  FPath  := TMazeCellList.Create;
   InitializeMaze;
   ProcessCell(AX, AY);
   FDeadEnds := TMazeCellList.Create;
