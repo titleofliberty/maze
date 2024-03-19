@@ -54,7 +54,7 @@ end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 begin
-  FMaze.FindPath(7, 7, 14, 14);
+  FMaze.FindPath(9, 9, 13, 13);
   Label1.Caption := Format('Path Steps: %d', [FMaze.Path.Count]);
   Invalidate;
 end;
@@ -73,8 +73,7 @@ begin
   // Draw the maze on the form's canvas
   FMaze.RenderMaze(Self.Canvas);
 
-  Canvas.Font.Color:= clWhite;
-  Canvas.Pen.Style := psClear;
+  //Exit;
 
   for i := 0 to FMaze.Path.Count - 1 do
   begin
@@ -85,7 +84,7 @@ begin
     else
       Canvas.Brush.Color := clBlue;
     rct := FMaze.Path[i].Rect.AsRect;
-    rct.Inflate(-6, -6);
+    rct.Inflate(-7, -7);
     Canvas.Ellipse(rct);
     rct := FMaze.Path[i].Rect.AsRect;
     Canvas.TextRect(rct, rct.Left, rct.Top, i.ToString, ts);

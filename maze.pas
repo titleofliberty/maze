@@ -360,24 +360,11 @@ begin
     begin
       cell := Cells[Y, X];
       rct  := cell.Rect.AsRect;
-      //if cell.Visited   then ACanvas.FillRect(rct);
       if cell.WallWest  then ACanvas.Line(cell.Rect.Left,  cell.Rect.Top,    cell.Rect.Left,  cell.Rect.Bottom);
       if cell.WallEast  then ACanvas.Line(cell.Rect.Right, cell.Rect.Top,    cell.Rect.Right, cell.Rect.Bottom);
       if cell.WallNorth then ACanvas.Line(cell.Rect.Left,  cell.Rect.Top,    cell.Rect.Right, cell.Rect.Top);
       if cell.WallSouth then ACanvas.Line(cell.Rect.Left,  cell.Rect.Bottom, cell.Rect.Right, cell.Rect.Bottom);
-
-      rct.Inflate(-6, -6);
-
-      if cell.WallCount = 3 then
-      begin
-        ACanvas.Brush.Color := clYellow;
-        ACanvas.Pen.Style := psClear;
-        ACanvas.Ellipse(rct);
-        ACanvas.Brush.Color := clWhite;
-        ACanvas.Pen.Style := psSolid;
-      end;
     end;
-
 end;
 
 procedure TMaze.GenerateMaze(AX, AY: Integer);
@@ -387,7 +374,6 @@ begin
   //  To generate a maze, TMaze must reset the FStack,
   //  initialize the maze with InitializeMaze, then it
   //  can start processing the cells.
-
   FStack := TObjectStack.Create;
   FPath  := TMazeCellList.Create;
   InitializeMaze;
@@ -407,7 +393,6 @@ end;
 
 procedure TMaze.FindPath(AX, AY, GoalX, GoalY: Integer);
 begin
-  FPath  := TMazeCellList.Create;
   FStack := TObjectStack.Create;
   FStack.Push(FCells[AX, AY]);
   ExploreCell(AX, AY, GoalX, GoalY);
