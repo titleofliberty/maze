@@ -5,19 +5,23 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Contnrs,
-  Maze;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, SpinEx,
+  Contnrs, Maze;
 
 type
 
   { TForm1 }
 
   TForm1 = class(TForm)
-    Button1: TButton;
-    Button2: TButton;
-    Label1: TLabel;
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
+    btnGenerate: TButton;
+    btnPath: TButton;
+    lblPathCount: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    txtWidth: TSpinEditEx;
+    txtHeight: TSpinEditEx;
+    procedure btnGenerateClick(Sender: TObject);
+    procedure btnPathClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormPaint(Sender: TObject);
   private
@@ -39,23 +43,25 @@ implementation
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   // Instantiate a maze 20 wide by 20 high
-  FMaze := TMaze.Create(12, 12, 48);
+  FMaze := TMaze.Create(txtWidth.Value, txtHeight.Value, 48);
   // Generate a random maze starting in cell 0, 0
   FMaze.GenerateMaze(0, 0);
+  lblPathCount.Caption := 'Path Steps: 0';
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TForm1.btnGenerateClick(Sender: TObject);
 begin
   // Generate a new maze
-  FMaze.GenerateMaze(0, 0);
+  FMaze := TMaze.Create(txtWidth.Value, txtHeight.Value, 48);
+  lblPathCount.Caption := 'Path Steps: 0';
   // Force the form to repaint
   Invalidate;
 end;
 
-procedure TForm1.Button2Click(Sender: TObject);
+procedure TForm1.btnPathClick(Sender: TObject);
 begin
   FMaze.FindPath(0, 0, FMaze.Width - 1, FMaze.Height - 1);
-  Label1.Caption := Format('Path Steps: %d', [FMaze.Path.Count]);
+  lblPathCount.Caption := Format('Path Steps: %d', [FMaze.Path.Count]);
   Invalidate;
 end;
 
@@ -72,7 +78,7 @@ begin
   ts.Layout     := tlCenter;
 
   // Draw the maze on the form's canvas
-  off := Point(25, 25);
+  off := Point(0, 0);
   FMaze.RenderMaze(Self.Canvas, off);
 
   //Exit;
