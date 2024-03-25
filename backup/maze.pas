@@ -63,8 +63,8 @@ type
     constructor Create(AX, AY: Integer);
     function WallCount: Integer;
   published
-    property X : Integer read FX;
-    property Y : Integer read FY;
+    property X    : Integer read FX;
+    property Y    : Integer read FY;
     property Rect     : TCellRect read FRect write FRect;
     property Visited  : Boolean read FVisited   write FVisited;
     property Explored : Boolean read FExplored  write FExplored;
@@ -99,7 +99,7 @@ type
     constructor Create(AWidth, AHeight, ACellSize: Integer);
     procedure RemoveWall(X1, Y1, X2, Y2: Integer);
     procedure InitializeMaze;
-    procedure RenderMaze(ACanvas: TCanvas);
+    procedure RenderMaze(ACanvas: TCanvas; AOffset: TPoint);
     procedure GenerateMaze(AX, AY: Integer);
     procedure FindPath(AX, AY, GoalX, GoalY: Integer);
     function  CompareCells(ACell, BCell: TMazeCell): Boolean;
@@ -344,7 +344,7 @@ begin
   end;
 end;
 
-procedure TMaze.RenderMaze(ACanvas: TCanvas);
+procedure TMaze.RenderMaze(ACanvas: TCanvas; AOffset: TPoint);
 var
   X, Y, I: Integer;
   cell : TMazeCell;
@@ -360,10 +360,11 @@ begin
     begin
       cell := Cells[Y, X];
       rct  := cell.Rect.AsRect;
-      if cell.WallWest  then ACanvas.Line(cell.Rect.Left,  cell.Rect.Top,    cell.Rect.Left,  cell.Rect.Bottom);
-      if cell.WallEast  then ACanvas.Line(cell.Rect.Right, cell.Rect.Top,    cell.Rect.Right, cell.Rect.Bottom);
-      if cell.WallNorth then ACanvas.Line(cell.Rect.Left,  cell.Rect.Top,    cell.Rect.Right, cell.Rect.Top);
-      if cell.WallSouth then ACanvas.Line(cell.Rect.Left,  cell.Rect.Bottom, cell.Rect.Right, cell.Rect.Bottom);
+      rct.Offset(AOffset);
+      if cell.WallWest  then ACanvas.Line(rct.Left,  rct.Top,    rct.Left,  rct.Bottom);
+      if cell.WallEast  then ACanvas.Line(rct.Right, rct.Top,    rct.Right, rct.Bottom);
+      if cell.WallNorth then ACanvas.Line(rct.Left,  rct.Top,    rct.Right, rct.Top);
+      if cell.WallSouth then ACanvas.Line(rct.Left,  rct.Bottom, rct.Right, rct.Bottom);
     end;
 end;
 
@@ -380,23 +381,19 @@ begin
   ProcessCell(AX, AY);
   FDeadEnds := TMazeCellList.Create;
 
-  // Find the cells that are dead ends;
+  SetZone(0, 0, 0);
+
+  // Find zones and the cells that are dead ends;
   for Y := 0 to FHeight - 1 do
-  begin
     for X := 0 to FWidth - 1 do
     begin
       if FCells[Y, X].WallCount = 3 then
         FDeadEnds.Add(FCells[Y, X]);
     end;
-  end;
 end;
 
 procedure TMaze.FindPath(AX, AY, GoalX, GoalY: Integer);
 begin
-  if Assigned(FPath) then
-    FPath.Clear
-  else
-    FPath := TMazeCellList.Create;
   FStack := TObjectStack.Create;
   FStack.Push(FCells[AX, AY]);
   ExploreCell(AX, AY, GoalX, GoalY);

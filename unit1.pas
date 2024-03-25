@@ -39,7 +39,7 @@ implementation
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   // Instantiate a maze 20 wide by 20 high
-  FMaze := TMaze.Create(20, 20, 32);
+  FMaze := TMaze.Create(12, 12, 48);
   // Generate a random maze starting in cell 0, 0
   FMaze.GenerateMaze(0, 0);
 end;
@@ -54,7 +54,7 @@ end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 begin
-  FMaze.FindPath(9, 9, 13, 13);
+  FMaze.FindPath(0, 0, FMaze.Width - 1, FMaze.Height - 1);
   Label1.Caption := Format('Path Steps: %d', [FMaze.Path.Count]);
   Invalidate;
 end;
@@ -64,6 +64,7 @@ var
   i: integer;
   rct: TRect;
   ts: TTextStyle;
+  off: TPoint;
 begin
   ts.SingleLine := true;
   ts.SystemFont := false;
@@ -71,9 +72,10 @@ begin
   ts.Layout     := tlCenter;
 
   // Draw the maze on the form's canvas
-  FMaze.RenderMaze(Self.Canvas);
+  off := Point(25, 25);
+  FMaze.RenderMaze(Self.Canvas, off);
 
-  Exit;
+  //Exit;
 
   for i := 0 to FMaze.Path.Count - 1 do
   begin
@@ -84,9 +86,11 @@ begin
     else
       Canvas.Brush.Color := clBlue;
     rct := FMaze.Path[i].Rect.AsRect;
+    rct.Offset(off);
     rct.Inflate(-7, -7);
+    Canvas.Brush.Style := bsSolid;
     Canvas.Ellipse(rct);
-    rct := FMaze.Path[i].Rect.AsRect;
+    Canvas.Brush.Style := bsClear;
     Canvas.TextRect(rct, rct.Left, rct.Top, i.ToString, ts);
   end;
 end;
